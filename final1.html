@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriVibe</title>
+    <link rel="icon" href="agri.png">
+    <link rel="stylesheet" href="Hstyles.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="logo">🌾AgriVibe🌾</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" onclick="openModal()">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#work">How It Works</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#" class="btn" onclick="openLogin()">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Us Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>About Us</h2>
+            <p>AgriVibe is a revolutionary platform bridging the gap between farmers and buyers, ensuring fair pricing and seamless transactions...</p>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm" onsubmit="saveLoginData(event)">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+                <input type="checkbox" id="rememberMe"> Remember Me<br><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Empowering Farmers, Connecting Buyers—Seamlessly!</h1>
+        <p>Sell smarter, buy better—directly from farms to buyers with real-time bidding and AI-driven price estimation.</p>
+        <div class="buttons">
+            <button onclick="window.location.href='Fsignup.html';" class="farmer">Join as a Farmer</button>
+            <button onclick="window.location.href='Fsignup.html';" class="buyer">Join as a Buyer</button>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature"><img src='Ai-powered.jpeg' alt="AI Powered">🚀 AI-Powered Price Estimation</div>
+            <div class="feature"><img src="bid.jpeg" alt="Bidding">📢 Real-Time Bidding</div>
+            <div class="feature"><img src="secure.jpeg" alt="Secure">🔒 Secure Transactions</div>
+            <div class="feature"><img src="delivery.jpeg" alt="Delivery">🚛 Fast & Reliable Delivery</div>
+            <div class="feature"><img src="verified.jpeg" alt="Verified">👨‍🌾 Verified Farmer & Buyer Profiles</div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="work" class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>For Farmers</h3>
+                <p>1️⃣ Upload Crop Image</p>
+                <p>2️⃣ Participate in Bidding</p>
+                <p>3️⃣ Secure the Best Deal</p>
+            </div>
+            <div class="step">
+                <h3>For Buyers</h3>
+                <p>1️⃣ Browse Listings</p>
+                <p>2️⃣ Place Bids</p>
+                <p>3️⃣ Receive Fresh Produce</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p><strong>Owner Name:</strong> Annamalai</p>
+        <p><strong>Phone:</strong> <a href="tel:+917358939545">+91 73589 39545</a></p>
+        <p><strong>Email:</strong> <a href="mailto:annamalai01437@gmail.com">annamalai01437@gmail.com</a></p>
+        <p><strong>Address:</strong> 123, Chennai, India</p>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917358939545" target="_blank">
+        <img src="whatsapp-icon.png" alt="WhatsApp" width="50"> Chat on WhatsApp
+    </a>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">"No middlemen, better profits!" - Farmer</div>
+            <div class="testimonial">"Fresh produce at the best prices!" - Buyer</div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="cta">
+        <h2>Join now and experience hassle-free buying and selling!</h2>
+        <button class="download">Download App</button>
+    </section>
+
+    <!-- Script Section -->
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function openLogin() {
+            document.getElementById("loginModal").style.display = "block";
+            loadLoginData();
+        }
+
+        function closeLogin() {
+            document.getElementById("loginModal").style.display = "none";
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function (event) {
+            var aboutModal = document.getElementById("myModal");
+            var loginModal = document.getElementById("loginModal");
+            if (event.target == aboutModal) aboutModal.style.display = "none";
+            if (event.target == loginModal) loginModal.style.display = "none";
+        }
+
+        // Save Login Data
+        function saveLoginData(e) {
+            e.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const remember = document.getElementById("rememberMe").checked;
+
+            if (remember) {
+                localStorage.setItem("savedUsername", username);
+                localStorage.setItem("savedPassword", password);
+                alert("Login data saved successfully!");
+            } else {
+                localStorage.removeItem("savedUsername");
+                localStorage.removeItem("savedPassword");
+            }
+
+            closeLogin();
+        }
+
+        // Load Login Data if available
+        function loadLoginData() {
+            const savedUsername = localStorage.getItem("savedUsername");
+            const savedPassword = localStorage.getItem("savedPassword");
+
+            if (savedUsername) {
+                document.getElementById("username").value = savedUsername;
+                document.getElementById("password").value = savedPassword;
+                document.getElementById("rememberMe").checked = true;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
